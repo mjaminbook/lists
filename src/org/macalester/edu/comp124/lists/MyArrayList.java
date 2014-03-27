@@ -29,7 +29,7 @@ public class MyArrayList<E> {
 	 * Clears the contents of the array.
 	 */
 	public void clear() {
-		elements = newArrayOfE(4);
+		elements = newArrayOfE(10);
 		currentSize = 0;
 	}
 	
@@ -47,7 +47,7 @@ public class MyArrayList<E> {
 	 * @return
 	 */
 	public E get(int index) {
-        return null;    // replace this line with the correct code.
+        return elements[index];    // replace this line with the correct code.
 	}
 	
 	/**
@@ -60,7 +60,11 @@ public class MyArrayList<E> {
 	 * @param elem
 	 */
 	public void add(E elem) {
-	}
+        if (size() >= elements.length)
+            expandSize();
+        elements[size()] = elem;
+        currentSize++;
+    }
 
 	/**
 	 * Inserts a new element at the specified index.
@@ -73,7 +77,18 @@ public class MyArrayList<E> {
 	 * 
 	 * @param elem
 	 */
-	public void add(int index, E elem) {
+	public void add(int index, E elem)
+    {
+        if (size() >= elements.length)
+            expandSize();
+
+        for (int i = size(); i > index; i--)
+        {
+            elements[i] = elements[i-1];
+        }
+
+        elements[index] = elem;
+        currentSize++;
 	}
 	
 	/**
@@ -84,17 +99,25 @@ public class MyArrayList<E> {
 	 * This will be useful for both versions of add().
      * Hint: use newArrayOfE!
 	 */
-	private void expandSize() {
-	}
+	private void expandSize()
+    {
+        E[] temp = newArrayOfE(currentSize*2);
+
+        for (int i = 0; i < elements.length; i++)
+        {
+            temp[i] = elements[i];
+        }
+
+        elements = temp;
+    }
 	
 	/**
 	 * Due to some crazy Java constraints, we can't simply create a
 	 * new array of elements of class E.  We need to create an array
 	 * of class Object and then cast the array to E.
-	 * @param capacity
-	 * @return
+	 *
 	 */
-	@SuppressWarnings("unchecked")
+
 	private E[] newArrayOfE(int capacity) {
 		return (E[])new Object[capacity];
 	}
