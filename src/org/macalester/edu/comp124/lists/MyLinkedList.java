@@ -1,21 +1,16 @@
-import org.macalester.edu.comp124.lists.MyLinkedNode;
+package org.macalester.edu.comp124.lists;
 
 /**
-
  * An unfinished implementation of a basic doubly-linked list.
-
- *
-
+ * <p/>
+ * <p/>
+ * <p/>
  * Note that the head and the tail contain "sentinel" nodes without values.
-
+ * <p/>
  * This makes the edge cases of the algorithm easier because the list always has a discrete head and tail.
-
  *
-
- * @author shilad
-
  * @param <E>
-
+ * @author shilad
  */
 
 public class MyLinkedList<E> {
@@ -24,14 +19,11 @@ public class MyLinkedList<E> {
 
     private MyLinkedNode<E> tail;
 
-    private int numElements = 0;
-
+    private int numElements;
 
 
     /**
-
      * Creates a new empty linked list.
-
      */
 
     public MyLinkedList() {
@@ -40,20 +32,18 @@ public class MyLinkedList<E> {
 
         tail = new MyLinkedNode<E>(null);
 
+        numElements = 0;
+
         clear();
 
     }
 
 
-
     /**
-
      * Returns the element at position index.
-
+     *
      * @param index
-
      * @return
-
      */
 
     public E get(int index) {
@@ -69,21 +59,15 @@ public class MyLinkedList<E> {
         }
 
 
-
         return node.getValue();
 
     }
 
 
-
     /**
-
      * Adds a new element to the end of the list:
-
      *
-
      * @param elem
-
      */
 
     public void add(E elem) {
@@ -101,21 +85,15 @@ public class MyLinkedList<E> {
         newNode.setPrev(secondToLast);
 
 
-
         numElements++;
 
     }
 
 
-
     /**
-
      * Inserts a new element at the specified index.
-
      *
-
      * @param elem
-
      */
 
     public void add(int i, E elem) {
@@ -131,11 +109,9 @@ public class MyLinkedList<E> {
         }
 
 
-
         MyLinkedNode<E> prevNode = current.getPrev();
 
         MyLinkedNode<E> newNode = new MyLinkedNode(elem);
-
 
 
         newNode.setNext(current);
@@ -147,21 +123,16 @@ public class MyLinkedList<E> {
         current.setPrev(newNode);
 
 
-
         numElements++;
-
 
 
     }
 
 
-
     /**
-
      * Returns the current size of the list.
-
+     *
      * @return
-
      */
 
     public int size() {
@@ -171,11 +142,8 @@ public class MyLinkedList<E> {
     }
 
 
-
     /**
-
      * Clears the contents of the list.
-
      */
 
     public void clear() {
@@ -198,22 +166,21 @@ public class MyLinkedList<E> {
     }
 
 
-
-
-
     /**
-
      * These methods are only used by the unit tests.
-
+     * <p/>
      * They are intentionally not public.
-
+     *
      * @return
-
      */
 
-    MyLinkedNode getHead() { return head; }
+    MyLinkedNode getHead() {
+        return head;
+    }
 
-    MyLinkedNode getTail() { return tail; }
+    MyLinkedNode getTail() {
+        return tail;
+    }
 
 }
 

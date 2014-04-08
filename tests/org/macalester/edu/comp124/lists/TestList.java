@@ -75,13 +75,13 @@ public class TestList {
      */
     @Test
     public void testOneLinkedAdd() {
-        MyLinkedList<String> llist = (MyLinkedList)(Object)list;
+        MyLinkedList<String> llist = new MyLinkedList<String>();
         llist.clear();
         assertEquals(llist.size(), 0);
         assertSame(llist.getHead().getNext(), llist.getTail());
         assertSame(llist.getHead(), llist.getTail().getPrev());
-        list.add("foo");
-        assertEquals(llist.size(), 1);
+        llist.add("foo");
+        assertEquals(1, llist.size());
 
         // there should be a new node following the head.
         MyLinkedNode<String> fooNode = llist.getHead().getNext();
