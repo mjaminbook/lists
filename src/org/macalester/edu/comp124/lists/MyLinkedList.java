@@ -19,7 +19,7 @@ public class MyLinkedList<E> {
 
     private MyLinkedNode<E> tail;
 
-    private int numElements;
+    protected int numElements;
 
 
     /**
@@ -49,18 +49,23 @@ public class MyLinkedList<E> {
     public E get(int index) {
 
         MyLinkedNode<E> node = head;
-
         for (int j = 0; j <= index; j++)
-
         {
-
-            node = node.getNext();
-
+            if (node.getNext().getValue()!=null) //POSSIBLY VERY BAD!
+                node = node.getNext();
         }
 
-
         return node.getValue();
+    }
 
+    public MyLinkedNode<E> getNode(int index)
+    {
+        MyLinkedNode<E> node = head;
+        for (int j = 0; j <= index; j++)
+        {
+            node = node.getNext();
+        }
+        return node;
     }
 
 
